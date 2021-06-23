@@ -40,4 +40,27 @@ class MainController extends Controller
             return back()->with('fail', 'Something went wrong, please try again later');
         }
     }
+
+    public function check (Request $request)
+    {
+        // validate request
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:5|max:12'
+        ]);
+
+        $userInfo = Admin::where('email', '=', $request->email)->first();
+
+        if(!$userInfo){
+            return back()->with('fail', 'We do not recognize your email address!');
+        }else{
+            //check password
+            if(Hash::check($request->password, $userInfo->password)){
+                $request->session()->put('LoggedInUser', $userInfo->id);
+                return redirect('admin/dashboard');
+            }else{
+                return back()->with('fail', 'Your password is incorrect!');
+            }
+        }
+    }
 }
