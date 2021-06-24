@@ -63,4 +63,18 @@ class MainController extends Controller
             }
         }
     }
+
+    public function logout ()
+    {
+        if(session()->has('LoggedInUser')){
+            session()->pull('LoggedInUser');
+            return redirect('/auth/login');
+        }
+    }
+
+    public function dashboard ()
+    {
+        $data = ['LoggedInUserInfo' => Admin::where('id', '=', session('LoggedInUser'))->first()];
+        return view('admin/dashboard', $data);
+    }
 }

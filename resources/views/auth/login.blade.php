@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>CRUD | Login</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 </head>
 <body>
     <div class="container" >
@@ -31,7 +31,7 @@
                         <input type="password" class="form-control" name="password" placeholder="Enter password">
                         <span class="text-danger">@error('password') {{ $message }} @enderror</span>
                     </div><br>
-                    <button type="submit" class="btn btn-block btn-primary">Sign In</button><br>
+                    <button type="submit" class="btn btn-block main-color-bg">Sign In</button><br>
                     <a href="{{ route('auth.register') }}">I don't have an account, create new</a>
                 </form>
             </div>
