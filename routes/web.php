@@ -15,16 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::post('/auth/save', [MainController::class, 'save'])->name('auth.save');
-Route::post('/auth/check', [MainController::class, 'check'])->name('auth.check');
-Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
-
+Route::post('/save', [MainController::class, 'save'])->name('auth.save');
+Route::post('/check', [MainController::class, 'check'])->name('auth.check');
+Route::get('/logout', [MainController::class, 'logout'])->name('auth.logout');
 
 Route::group(['middleware' => ['AuthCheck']], function(){
-    Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
-    Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
+    Route::get('/login', [MainController::class, 'login'])->name('auth.login');
+    Route::get('/register', [MainController::class, 'register'])->name('auth.register');
     Route::get('/admin/dashboard', [MainController::class, 'dashboard']);
 });
