@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-        <title>Admin | Posts</title> 
+        <title>Posts List</title> 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     </head>
@@ -17,7 +17,7 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{{ route('admin.posts') }}">Posts</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="{{ route('posts.show') }}">Posts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
                 </ul>
                 <ul class="navbar-nav">
@@ -29,6 +29,14 @@
 
         <header id="header">
             <div class="container">
+                @if(Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get('success')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                @endif
                 <form action="" method="GET">
                     <input class="form-control" type="text" placeholder="Type here to search...">
                 </form>
