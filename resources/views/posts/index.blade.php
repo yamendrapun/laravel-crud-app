@@ -47,7 +47,7 @@
             <div class="container">
                 <div class="row">
 
-                    <a class="btn btn-block main-color-bg m-4" href="">Add Post</a>
+                    <a class="btn btn-block main-color-bg m-4" href="{{ route('posts.create') }}">Add Post</a>
 
                     @if($posts->count() > 0)
                         <table class="table">
@@ -67,7 +67,7 @@
                                         <td>{{ $post->title}}</td>
                                         <td>{{ $post->content}}</td>
                                         <td>{{$post->created_at}}</td>
-                                        <td></td>
+                                        <td><a class="btn main-color-bg" href="posts/{{$post->id}}/edit">Edit</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
