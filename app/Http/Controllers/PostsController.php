@@ -68,4 +68,13 @@ class PostsController extends Controller
 
         return redirect('/posts')->with('success', 'Your post has been updated successfully.');
     }
+
+    public function destroy (Post $post)
+    {
+        if($post->delete()){
+            return redirect('/posts')->with('success', 'Post was been successfully deleted from database');
+        }else{
+            return redirect('/posts')->with('fail', 'Something went wrong, please try again later');
+        }
+    }
 }

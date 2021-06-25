@@ -33,4 +33,5 @@ Route::group(['middleware' => ['AuthCheck']], function(){
     Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
     Route::get('/posts/{post}/edit', [PostsController::class, 'edit']);
     Route::put('/posts/{post}',[PostsController::class, 'update']);
+    Route::delete('/posts/{post}',[PostsController::class, 'destroy']);
 });

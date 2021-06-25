@@ -67,7 +67,14 @@
                                         <td>{{ $post->title}}</td>
                                         <td>{{ $post->content}}</td>
                                         <td>{{$post->created_at}}</td>
-                                        <td><a class="btn main-color-bg" href="posts/{{$post->id}}/edit">Edit</a></td>
+                                        <td>
+                                            <a class="btn btn-success" href="posts/{{$post->id}}/edit">Edit</a>
+                                            <form action="/posts/{{$post->id}}" method="POST" class="block">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

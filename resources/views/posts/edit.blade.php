@@ -43,6 +43,7 @@
                             <span class="text-danger">@error('content') {{ $message }} @enderror</span>
                         </div>
                         <button type="submit" class="btn main-color-bg">Update</button>
+                        <a href="/posts" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
