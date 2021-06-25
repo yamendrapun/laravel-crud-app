@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Post;
+use App\Models\Admin;
 
-class Admin extends Model
+class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password'
+        'title',
+        'content'
     ];
 
-    public function posts ()
+    public function admin ()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(Admin::class);
     }
 }

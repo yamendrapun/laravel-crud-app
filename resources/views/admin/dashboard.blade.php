@@ -17,8 +17,7 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#">Home</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.posts') }}">Posts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
                 </ul>
                 <ul class="navbar-nav">
@@ -28,11 +27,11 @@
             </div>
         </nav>
         
-        <header id="header">
+        <!-- <header id="header">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10">
-                        <h1></span> Dashboard</h1>
+                        <h1>Dashboard</h1>
                     </div>
                     <div class="col-md-2">
                         <div class="dropdown create">
@@ -47,17 +46,17 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> -->
 
         <section id="breadcrumb">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="active">Dashboard</li>
+                    <li class="active">Welcome to Dashboard.</li>
                 </ol>
             </div>
         </section>
 
-        <section id="main">
+        <!-- <section id="main">
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
@@ -65,8 +64,8 @@
                             <a href="#" class="list-group-item list-group-item-action active main-color-bg" aria-current="true">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action">Posts <span class="badge badge-secondary">230</span></a>
-                            <a href="#" class="list-group-item list-group-item-action">Users <span class="badge badge-secondary">100</span></a>
+                            <a href="#" class="list-group-item list-group-item-action">Posts</a>
+                            <a href="#" class="list-group-item list-group-item-action">Users</a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -74,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <script src="{{ asset('js/app.js') }}"></script>
   </body>
