@@ -84,12 +84,11 @@ body {
     color: #ffffff;
 }
 
-/* Heder */
+/* Header */
 #header {
     background: gray;
     color: #ffffff;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
 }
 
 #header .create {

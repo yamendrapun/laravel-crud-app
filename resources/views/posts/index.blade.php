@@ -27,9 +27,20 @@
             </div>
         </nav>
 
+        <header id="header">
+            <div class="container">
+                <form action="" method="GET">
+                    <input class="form-control" type="text" placeholder="Type here to search...">
+                </form>
+            </div>
+        </header>
+
         <section id="main">
             <div class="container">
                 <div class="row">
+
+                    <a class="btn btn-block main-color-bg m-4" href="">Add Post</a>
+
                     @if($posts->count() > 0)
                         <table class="table">
                             <thead>
