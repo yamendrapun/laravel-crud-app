@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     public function index ()
     {
-       $posts = Post::all();
-       $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
-       
-       return view('admin.posts.index', ['posts' => $posts, 'admin' => $admin]);
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+        
+        $posts = Post::latest();
+
+        if(request('search')){
+            $posts 
+                ->where('title', 'LIKE', '%'.request('search').'%')
+                ->orWhere('content', 'LIKE', '%'.request('search').'%');
+        }
+
+       return view('admin.posts.index', ['posts' => $posts->get(), 'admin' => $admin]);
     }
     
     public function create ()
@@ -79,5 +87,29 @@ class PostsController extends Controller
         }else{
             return redirect('/posts')->with('fail', 'Something went wrong, please try again later');
         }
+    }
+
+    public function search (Request $request)
+    {
+       $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+
+        if(isset($_GET['query'])){
+            $search_text = $_GET['query'];
+            $posts = DB::table('posts')->where('title', 'LIKE', '%'.$search_text.'%');
+            dd($posts);
+            return view('admin.posts.index',['posts' => $posts, 'admin' => $admin]);
+        }else{
+            return view('search');
+        }
+
+    //     $posts = Post::query()
+    //         ->where('title', 'LIKE', '%{$search}%')
+    //         ->orWhere('content', 'LIKE', '%{$search}%')
+    //         ->get();
+
+    //    $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+
+        // return view('admin.posts.index', ['posts' => $posts, 'admin' => $admin]);
+
     }
 }

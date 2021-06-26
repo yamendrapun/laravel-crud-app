@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label>Post title</label>
-                <input type="text" class="form-control" name="title" id="title" value={{ $post->title }}>
+                <input type="text" class="form-control" name="title" id="title" value='{{ $post->title }}'>
                 <span class="text-danger">@error('title') {{ $message }} @enderror</span>
             </div>
             <div class="form-group">

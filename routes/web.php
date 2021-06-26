@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,10 +29,10 @@ Route::group(['middleware' => ['AuthCheck']], function(){
     Route::get('/register', [MainController::class, 'register'])->name('auth.register');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.show');
 
-    Route::get('/posts', [PostsController::class, 'index'])->name('posts.show'); 
-    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
-    Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
-    Route::get('/posts/{post}/edit', [PostsController::class, 'edit']);
-    Route::put('/posts/{post}',[PostsController::class, 'update']);
-    Route::delete('/posts/{post}',[PostsController::class, 'destroy']);
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.show'); 
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+    Route::put('/posts/{post}',[PostController::class, 'update']);
+    Route::delete('/posts/{post}',[PostController::class, 'destroy']);
 });

@@ -15,18 +15,11 @@
                 </button>
                 </div>
             @endif
-            <form action="/search" method="POST" role="search">
-                {{ csrf_field() }}
+            <form action="#" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="q" placeholder="Search posts here...">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn main-color-bg"><i class="bi bi-search"></i></button>
-                    </span>
+                    <input type="text" class="form-control" name="search" placeholder="Search here..." value="{{ request('search') }}">
                 </div>
             </form>
-            <!-- <form action="" method="GET">
-                <input class="form-control" type="text" placeholder="Type here to search...">
-            </form> -->
         </div>
     </header>
 
