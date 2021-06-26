@@ -12,13 +12,14 @@ class PostsController extends Controller
     {
        $posts = Post::all();
        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
-
-        return view('posts.index', ['posts' => $posts, 'admin' => $admin]);
+       
+       return view('admin.posts.index', ['posts' => $posts, 'admin' => $admin]);
     }
-
+    
     public function create ()
     {
-        return view('posts.create');
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+        return view('admin.posts.create', ['admin' => $admin]);
     }
 
     public function store (Request $request)
@@ -47,7 +48,8 @@ class PostsController extends Controller
 
     public function edit (Post $post)
     {
-        return view('posts.edit', ['post' => $post]);
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+        return view('admin.posts.edit', ['post' => $post, 'admin' => $admin]);
     }
 
     public function update (Post $post)

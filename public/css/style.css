@@ -84,25 +84,10 @@ body {
     color: #ffffff;
 }
 
-/* Header */
-#header {
-    background: gray;
-    color: #ffffff;
-    padding: 5px;
-}
-
-#header .create {
-    padding-top: 20px;
-}
-
 /* Breadcrumb */
 .breadcrumb {
     margin-top: 10px;
     background: #cccccc;
-    color: #333333;
-}
-
-.breadcrumb a {
     color: #333333;
 }
 
