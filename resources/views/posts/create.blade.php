@@ -32,12 +32,12 @@
                     <form action="/posts" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Post title</label>
                             <input type="text" class="form-control" name="title" id="title">
                             <span class="text-danger">@error('title') {{ $message }} @enderror</span>
                         </div>
                         <div class="form-group">
-                            <label>Content</label>
+                            <label>Post content</label>
                             <textarea name="content" id="content" class="form-control" rows="3"></textarea>
                             <span class="text-danger">@error('content') {{ $message }} @enderror</span>
                         </div>

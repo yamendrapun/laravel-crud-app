@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>Posts List</title> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     </head>
@@ -19,15 +20,15 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" href="{{ route('posts.show') }}">Posts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-                </ul>
+                </ul>                                                                                   
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Welcome, Admin</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Welcome, {{ ucfirst($admin->name) }}</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
                 </ul>
             </div>
         </nav>
 
-        <header id="header">
+        <header class="mt-2">
             <div class="container">
                 @if(Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -37,9 +38,18 @@
                     </button>
                     </div>
                 @endif
-                <form action="" method="GET">
-                    <input class="form-control" type="text" placeholder="Type here to search...">
+                <form action="/search" method="POST" role="search">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search posts here...">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn main-color-bg"><i class="bi bi-search"></i></button>
+                        </span>
+                    </div>
                 </form>
+                <!-- <form action="" method="GET">
+                    <input class="form-control" type="text" placeholder="Type here to search...">
+                </form> -->
             </div>
         </header>
 
@@ -47,9 +57,9 @@
             <div class="container">
                 <div class="row">
 
-                    <a class="btn btn-block main-color-bg m-4" href="{{ route('posts.create') }}">Add Post</a>
+                    <a class="btn main-color-bg m-4" href="{{ route('posts.create') }}"><i class="bi bi-plus-lg"></i> ADD POST</a>
 
-                    @if($posts->count() > 0)
+                    @if($posts->count())
                         <table class="table">
                             <thead>
                                 <tr>
@@ -68,11 +78,11 @@
                                         <td>{{ $post->content}}</td>
                                         <td>{{$post->created_at}}</td>
                                         <td>
-                                            <a class="btn btn-success" href="posts/{{$post->id}}/edit">Edit</a>
-                                            <form action="/posts/{{$post->id}}" method="POST" class="block">
+                                            <a class="d-inline btn btn-success" href="posts/{{$post->id}}/edit"><i class="bi bi-pencil"></i></a>
+                                            <form class="d-inline" action="/posts/{{$post->id}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn main-color-bg"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -80,7 +90,7 @@
                             </tbody>
                         </table>
                     @else
-                        <p class="mt-2">There are no posts to disply.</p>
+                        <p class="m-2 ">There are no posts to display.</p>
                     @endif
                 </div>
             </div>

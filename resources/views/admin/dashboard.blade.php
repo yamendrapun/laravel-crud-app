@@ -21,7 +21,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Welcome, Admin</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Welcome, {{ ucfirst($data->name) }}</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
                 </ul>
             </div>

@@ -74,7 +74,7 @@ class MainController extends Controller
 
     public function dashboard ()
     {
-        $data = ['LoggedInUserInfo' => Admin::where('id', '=', session('LoggedInUser'))->first()];
-        return view('admin/dashboard', $data);
+        $data = Admin::where('id', '=', session('LoggedInUser'))->first();
+        return view('admin/dashboard', ['data' => $data]);
     }
 }

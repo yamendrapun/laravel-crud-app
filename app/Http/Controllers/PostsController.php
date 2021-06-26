@@ -10,9 +10,10 @@ class PostsController extends Controller
 {
     public function index ()
     {
-        $posts = Post::all();
+       $posts = Post::all();
+       $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
 
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts, 'admin' => $admin]);
     }
 
     public function create ()
