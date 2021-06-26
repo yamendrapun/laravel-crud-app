@@ -24,6 +24,18 @@ class PostController extends Controller
        return view('admin.posts.index', ['posts' => $posts->get(), 'admin' => $admin]);
     }
     
+    public function show (Post $post)
+    {
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+
+        $data = DB::table('posts')
+            ->join('admins', 'admins.id', '=', 'posts.admin_id')
+            ->select('posts.*', 'admins.firstName', 'admins.lastName')
+            ->where('posts.id', $post->id)
+            ->get();
+        return view('admin.posts.show', ['data' => $data, 'admin' => $admin]);
+    }
+
     public function create ()
     {
         $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
@@ -38,12 +50,12 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        $data = Admin::where('id', '=', session('LoggedInUser'))->first();
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
         
         $admin = new Post;
         $admin->title = $request->title;
         $admin->content = $request->content;
-        $admin->admin_id = $data->id;
+        $admin->admin_id = $admin->id;
         $save = $admin->save();
 
 
@@ -68,13 +80,13 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        $data = Admin::where('id', '=', session('LoggedInUser'))->first();
+        $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
         
         // update data into database
         $post->update([
             'title' => request('title'),
             'content' => request('content'),
-            'admin_id' => $data->id
+            'admin_id' => $admin->id
         ]);
 
         return redirect('/posts')->with('success', 'Your post has been updated successfully.');

@@ -42,7 +42,8 @@
                             <td>{{ $post->content}}</td>
                             <td>{{$post->created_at}}</td>
                             <td>
-                                <a class="d-inline btn btn-success" href="posts/{{$post->id}}/edit"><i class="bi bi-pencil"></i></a>
+                                <a class="d-inline btn main-color-bg" href="posts/{{$post->id}}/show"><i class="bi bi-view-list"></i></a>
+                                <a class="d-inline btn main-color-bg" href="posts/{{$post->id}}/edit"><i class="bi bi-pencil"></i></a>
                                 <form class="d-inline" action="/posts/{{$post->id}}" method="POST">
                                     @method('DELETE')
                                     @csrf

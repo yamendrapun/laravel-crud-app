@@ -29,7 +29,8 @@ Route::group(['middleware' => ['AuthCheck']], function(){
     Route::get('/register', [MainController::class, 'register'])->name('auth.register');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.show');
 
-    Route::get('/posts', [PostController::class, 'index'])->name('posts.show'); 
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index'); 
+    Route::get('/posts/{post}/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
