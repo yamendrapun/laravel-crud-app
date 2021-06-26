@@ -22,20 +22,22 @@ class MainController extends Controller
     {
         // validate request
         $request->validate([
-            'name' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
             'email' => 'required|email|unique:admins',
             'password' => 'required|min:5|max:5'
         ]);
 
         // insert data into database
         $admin = new Admin;
-        $admin->name = $request->name;
+        $admin->firstName = $request->firstName;
+        $admin->lastName = $request->lastName;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
         $save = $admin->save();
 
         if($save){
-            return back()->with('success', 'New User has been successfully added to database');
+            return back()->with('success', 'New User has been successfully created');
         }else{
             return back()->with('fail', 'Something went wrong, please try again later');
         }

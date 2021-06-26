@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD | Login</title>
+    <title>CRUD - Login</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 </head>
@@ -23,12 +23,12 @@
                     @csrf
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email Address" value="{{ old('email') }}">
                         <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter password">
+                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
                         <span class="text-danger">@error('password') {{ $message }} @enderror</span>
                     </div><br>
                     <button type="submit" class="btn btn-block main-color-bg">Sign In</button><br>
