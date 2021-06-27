@@ -27,12 +27,12 @@
 
                     @csrf
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>First Name</label>
                         <input type="text" class="form-control" name="firstName" placeholder="Enter First Name" value="{{ old('firstName')}}">
                         <span class="text-danger">@error('firstName') {{ $message }} @enderror</span> 
                     </div>
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Last Name</label>
                         <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name" value="{{ old('lastName')}}">
                         <span class="text-danger">@error('lastName') {{ $message }} @enderror</span> 
                     </div>
