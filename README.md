@@ -1,4 +1,4 @@
-# Laravel CRUD APP
+# Laravel CRUD App
 # Website Demo: 
   http://laravelcrudappv1-env.eba-pwkgazea.ap-northeast-1.elasticbeanstalk.com/
 
