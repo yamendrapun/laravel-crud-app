@@ -51,12 +51,14 @@ class PostController extends Controller
         ]);
 
         $admin = Admin::where('id', '=', session('LoggedInUser'))->first();
+
+        // dd($admin->id);
         
-        $admin = new Post;
-        $admin->title = $request->title;
-        $admin->content = $request->content;
-        $admin->admin_id = $admin->id;
-        $save = $admin->save();
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->admin_id = $admin->id;
+        $save = $post->save();
 
 
         if($save){
