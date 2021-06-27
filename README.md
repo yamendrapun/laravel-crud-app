@@ -1,8 +1,8 @@
-#Laravel CRUD APP
-#Website Demo: 
-http://laravelcrudappv1-env.eba-pwkgazea.ap-northeast-1.elasticbeanstalk.com/
+# Laravel CRUD APP
+# Website Demo: 
+  http://laravelcrudappv1-env.eba-pwkgazea.ap-northeast-1.elasticbeanstalk.com/
 
-#Installation
+# Installation
 1. Clone the repo and cd into it
 2. composer install
 3. Rename or copy .env.example file to .env
