@@ -37,3 +37,4 @@ Route::group(['middleware' => ['AuthCheck']], function(){
     Route::put('/posts/{post}',[PostController::class, 'update']);
     Route::delete('/posts/{post}',[PostController::class, 'destroy']);
 });
+

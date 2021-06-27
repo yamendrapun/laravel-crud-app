@@ -24,7 +24,7 @@
     </header>
 
     <div class="container">
-        <a class="btn main-color-bg m-4" href="{{ route('posts.create') }}"><i class="bi bi-plus-lg"></i> ADD POST</a>
+        <a class="btn main-color-bg m-4 button-block" href="{{ route('posts.create') }}"><i class="bi bi-plus-lg"></i> ADD POST</a>
         <table class="table">
             <thead>
                 <tr>
