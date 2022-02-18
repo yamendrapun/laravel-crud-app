@@ -8,24 +8,24 @@ use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
-    public function login ()
+    public function login()
     {
         return view('auth.login');
     }
-    
-    public function register ()
+
+    public function register()
     {
         return view('auth.register');
     }
 
-    public function save (Request $request)
+    public function save(Request $request)
     {
         // validate request
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required|email|unique:admins',
-            'password' => 'required|min:5|max:5'
+            'password' => 'required|min:5'
         ]);
 
         // insert data into database
@@ -36,14 +36,14 @@ class MainController extends Controller
         $admin->password = Hash::make($request->password);
         $save = $admin->save();
 
-        if($save){
+        if ($save) {
             return back()->with('success', 'New User has been successfully created');
-        }else{
+        } else {
             return back()->with('fail', 'Something went wrong, please try again later');
         }
     }
 
-    public function check (Request $request)
+    public function check(Request $request)
     {
         // validate request
         $request->validate([
@@ -53,22 +53,22 @@ class MainController extends Controller
 
         $userInfo = Admin::where('email', '=', $request->email)->first();
 
-        if(!$userInfo){
+        if (!$userInfo) {
             return back()->with('fail', 'We do not recognize your email address!');
-        }else{
+        } else {
             //check password
-            if(Hash::check($request->password, $userInfo->password)){
+            if (Hash::check($request->password, $userInfo->password)) {
                 $request->session()->put('LoggedInUser', $userInfo->id);
                 return redirect('dashboard');
-            }else{
+            } else {
                 return back()->with('fail', 'Your password is incorrect!');
             }
         }
     }
 
-    public function logout ()
+    public function logout()
     {
-        if(session()->has('LoggedInUser')){
+        if (session()->has('LoggedInUser')) {
             session()->pull('LoggedInUser');
             return redirect('/login');
         }
